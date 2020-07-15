@@ -14,7 +14,7 @@ casesjson = r.json()
 print(casesjson.keys())
 
 #Store one branch of that - it will be a list of dicts
-ltlas = casesjson['ltlas'])
+ltlas = casesjson['ltlas']
 for i in ltlas:
   #There's no unique key so we can create one
   i['codedatekey'] = i['areaCode']+"-"+i['specimenDate']

@@ -18,4 +18,4 @@ for i in ltlas:
   #There's no unique key so we can create one
   i['codedatekey'] = i['areaCode']+"-"+i['specimenDate']
   #save dict to the sqlite database
-  scraperwiki.sqlite.save(unique_keys=['name'], data=i)
+  scraperwiki.sqlite.save(unique_keys=['codedatekey'], data=i)

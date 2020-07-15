@@ -1,24 +1,22 @@
-# This is a template for a Python scraper on morph.io (https://morph.io)
-# including some code snippets below that you should find helpful
 
-# import scraperwiki
+
+import scraperwiki
 # import lxml.html
-#
-# # Read in a page
-# html = scraperwiki.scrape("http://foo.com")
-#
-# # Find something on the page using css selectors
-# root = lxml.html.fromstring(html)
-# root.cssselect("div[align='left']")
-#
-# # Write out to the sqlite database using scraperwiki library
-# scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
-#
-# # An arbitrary query against the database
-# scraperwiki.sql.select("* from data where 'name'='peter'")
 
-# You don't have to do things with the ScraperWiki and lxml libraries.
-# You can use whatever libraries you want: https://morph.io/documentation/python
-# All that matters is that your final data is written to an SQLite database
-# called "data.sqlite" in the current working directory which has at least a table
-# called "data".
+##Store the URL of the JSON file
+casesjsonurl = "https://coronavirus.data.gov.uk/downloads/json/coronavirus-cases_latest.json"
+
+#Fetch and store the JSON at that URL
+r = requests.get(casesjsonurl)
+#Read it as JSON into a new JSON object
+casesjson = r.json()
+#Show the keys
+print(casesjson.keys())
+
+#Store one branch of that - it will be a list of dicts
+ltlas = casesjson['ltlas'])
+for i in ltlas:
+  #There's no unique key so we can create one
+  i['codedatekey'] = i['areaCode']+"-"+i['specimenDate']
+  #save dict to the sqlite database
+  scraperwiki.sqlite.save(unique_keys=['name'], data=i)

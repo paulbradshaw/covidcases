@@ -1,7 +1,6 @@
-
-
+#import libraries
 import scraperwiki
-# import lxml.html
+import requests
 
 ##Store the URL of the JSON file
 casesjsonurl = "https://coronavirus.data.gov.uk/downloads/json/coronavirus-cases_latest.json"
